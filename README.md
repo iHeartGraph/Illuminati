@@ -12,9 +12,8 @@ We use [Pytorch Geometric](https://pytorch-geometric.readthedocs.io/en/latest/#)
 
 The datasets can be loaded from Pytorch Geometric. The datasets we use in the paper are:
 
-```
-["BBBP", "Mutagenicity", "BA-2motifs"]
-```
+`["BBBP", "Mutagenicity", "BA-2motifs"]` for graph classification.
+`["Cora", "Citeseer"]` for node classification.
 
 ## Using Illuminati
 
