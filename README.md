@@ -39,11 +39,23 @@ sample - the number of samples for PGM-Explainer
 python train_TASK.py
 ```
 
-### Explainint a GNN model
+We save the model with the best validation result while training. We also provide early stop.
+
+### Explaining a GNN model
 
 ```
 python explain_TASK.py
 ```
+
+This is to explain the whole dataset. We save node masks for each graph as a single .csv file. The time complexity can be evaluated here.
+
+### Evaluating an explanation method
+
+```
+python evaluate_TASK.py
+```
+
+Here, we provide Essentialness Percentage (EP) for explained subgraphs and remaining subgraphs.
 
 ## Cite
 
