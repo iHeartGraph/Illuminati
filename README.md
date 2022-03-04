@@ -20,6 +20,14 @@ We modify the dataset loader from [DIG](https://github.com/divelab/DIG).
 
 ## Using Illuminati
 
+`TASK` as `graph` for graph classification, `node` for node classification.
+
+### Training a GCN model
+
+```
+python train_TASK.py
+```
+
 ## Cite
 
 ```
