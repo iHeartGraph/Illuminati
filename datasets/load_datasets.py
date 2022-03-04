@@ -8,7 +8,8 @@ import os.path as osp
 from torch_geometric.datasets import MoleculeNet
 from torch_geometric.utils import dense_to_sparse
 from torch.utils.data import random_split, Subset
-from torch_geometric.data import Data, InMemoryDataset, DataLoader
+from torch_geometric.data import Data, InMemoryDataset
+from torch_geometric.loader import DataLoader
 
 
 def undirected_graph(data):
@@ -113,8 +114,8 @@ def get_dataset(dataset_dir, dataset_name, task=None):
     sentigraph_names = [name.lower() for name in sentigraph_names]
     molecule_net_dataset_names = [name.lower() for name in MoleculeNet.names.keys()]
 
-    if dataset_name.lower() == 'MUTAG'.lower():
-        return load_MUTAG(dataset_dir, 'MUTAG')
+    if dataset_name.lower() == 'Mutagenicity'.lower():
+        return load_MUTAG(dataset_dir, 'Mutagenicity')
     elif dataset_name.lower() in sync_dataset_dict.keys():
         sync_dataset_filename = sync_dataset_dict[dataset_name.lower()]
         return load_syn_data(dataset_dir, sync_dataset_filename)
@@ -154,12 +155,12 @@ class MUTAGDataset(InMemoryDataset):
 
     def process(self):
         r"""Processes the dataset to the :obj:`self.processed_dir` folder."""
-        with open(os.path.join(self.raw_dir, 'MUTAG_node_labels.txt'), 'r') as f:
+        with open(os.path.join(self.raw_dir, 'Mutagenicity_node_labels.txt'), 'r') as f:
             nodes_all_temp = f.read().splitlines()
             nodes_all = [int(i) for i in nodes_all_temp]
 
         adj_all = np.zeros((len(nodes_all), len(nodes_all)))
-        with open(os.path.join(self.raw_dir, 'MUTAG_A.txt'), 'r') as f:
+        with open(os.path.join(self.raw_dir, 'Mutagenicity_A.txt'), 'r') as f:
             adj_list = f.read().splitlines()
         for item in adj_list:
             lr = item.split(', ')
@@ -167,23 +168,23 @@ class MUTAGDataset(InMemoryDataset):
             r = int(lr[1])
             adj_all[l - 1, r - 1] = 1
 
-        with open(os.path.join(self.raw_dir, 'MUTAG_graph_indicator.txt'), 'r') as f:
+        with open(os.path.join(self.raw_dir, 'Mutagenicity_graph_indicator.txt'), 'r') as f:
             graph_indicator_temp = f.read().splitlines()
             graph_indicator = [int(i) for i in graph_indicator_temp]
             graph_indicator = np.array(graph_indicator)
 
-        with open(os.path.join(self.raw_dir, 'MUTAG_graph_labels.txt'), 'r') as f:
+        with open(os.path.join(self.raw_dir, 'Mutagenicity_graph_labels.txt'), 'r') as f:
             graph_labels_temp = f.read().splitlines()
             graph_labels = [int(i) for i in graph_labels_temp]
 
         data_list = []
-        for i in range(1, 189):
+        for i in range(1, 4338):
             idx = np.where(graph_indicator == i)
             graph_len = len(idx[0])
             adj = adj_all[idx[0][0]:idx[0][0] + graph_len, idx[0][0]:idx[0][0] + graph_len]
             label = int(graph_labels[i - 1] == 1)
             feature = nodes_all[idx[0][0]:idx[0][0] + graph_len]
-            nb_clss = 7
+            nb_clss = 14
             targets = np.array(feature).reshape(-1)
             one_hot_feature = np.eye(nb_clss)[targets]
             data_example = Data(x=torch.from_numpy(one_hot_feature).float(),
@@ -439,4 +440,4 @@ def get_dataloader(dataset, batch_size, random_split_flag=True, data_split_ratio
 
 
 if __name__ == '__main__':
-    get_dataset(dataset_dir='./datasets', dataset_name='ba_lrp')
+    get_dataset(dataset_dir='./datasets', dataset_name='bbbp')
