@@ -33,8 +33,6 @@ agg1 & agg2 - aggregation functions for node importance scores [mean, min, max, 
 sample - the number of samples for PGM-Explainer
 ```
 
-$ \theta $
-
 ### Training a GNN model
 
 ```
