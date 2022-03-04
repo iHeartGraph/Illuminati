@@ -12,9 +12,9 @@ We use [Pytorch Geometric](https://pytorch-geometric.readthedocs.io/en/latest/#)
 
 The datasets can be loaded from Pytorch Geometric. The datasets we use in the paper are:
 
-`["BBBP", "Mutagenicity", "BA-2motifs"]` for graph classification.
+\["BBBP", "Mutagenicity", "BA-2motifs"\] for graph classification.
 
-`["Cora", "Citeseer"]` for node classification.
+\["Cora", "Citeseer"\] for node classification.
 
 We modify the dataset loader from [DIG](https://github.com/divelab/DIG).
 
@@ -26,10 +26,10 @@ We modify the dataset loader from [DIG](https://github.com/divelab/DIG).
 
 We use `configs.json` to control this project. Specifically,
 
-- mode: the choice of explanation methods `{0: GNNExplainer or Illuminati, 1: PGM-Explainer, 2: PGExplainer}`
+\[mode\]: the choice of explanation methods, {0: GNNExplainer or Illuminati, 1: PGM-Explainer, 2: PGExplainer}
 - node: whether to estimate node importance scores, i.e., GNNExplainer or Illuminati
 - synchronize: synchronized attribute mask learning
-- agg1 & agg2: aggregation functions for node importance scores `[mean, min, max, sum]`
+- agg1 & agg2: aggregation functions for node importance scores \[mean, min, max, sum\]
 - sample: the number of samples for PGM-Explainer
 
 ### Training a GCN model
