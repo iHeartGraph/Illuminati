@@ -25,11 +25,13 @@ We modify the dataset loader from [DIG](https://github.com/divelab/DIG).
 
 We use `configs.json` to control this project. Specifically,
 
+```
 \[mode\]: the choice of explanation methods, {0: GNNExplainer or Illuminati, 1: PGM-Explainer, 2: PGExplainer} <br/>
 \[node\]: whether to estimate node importance scores, i.e., GNNExplainer or Illuminati <br/>
 \[synchronize\]: synchronized attribute mask learning <br/>
 \[agg1 & agg2\]: aggregation functions for node importance scores \[mean, min, max, sum\] <br/>
 \[sample\]: the number of samples for PGM-Explainer
+```
 
 ### Training a GCN model
 
