@@ -47,7 +47,7 @@ We save the model with the best validation result while training. We also provid
 $ python explain_TASK.py
 ```
 
-This is to explain the whole dataset. We save node masks for each graph as a single .csv file. The time complexity can be evaluated here.
+This is to explain the whole dataset. We save node importance scores for each graph as a single ".csv" file. The time complexity can be evaluated here.
 
 ### Evaluating an explanation method
 
