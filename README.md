@@ -55,7 +55,7 @@ This is to explain the whole dataset. We save node importance scores for each gr
 $ python evaluate_TASK.py
 ```
 
-Here, we provide Essentialness Percentage (EP) for explained subgraphs and remaining subgraphs.
+Here, we provide Essentialness Percentage (EP) and probability reduction for explained subgraphs and remaining subgraphs.
 
 ## Cite
 
