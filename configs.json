@@ -1,0 +1,25 @@
+{
+  "gcn": {
+    "model": {
+      "n_layers": 6,
+      "n_feat": 96,
+      "n_hidden": 32,
+      "n_class": 2
+    },
+    "epochs": 50,
+    "lr": 5e-1,
+    "weight_decay": 1.3e-8
+  },
+
+  "explainer": {
+    "mode": 0,
+    "node": 1,
+    "node_rate": 10,
+    "synchronize": 1,
+    "epochs": 50,
+    "lr": 5e-2,
+    "agg1": "max",
+    "agg2": "",
+    "sample": 128
+  }
+}
