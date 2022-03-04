@@ -16,6 +16,8 @@ The datasets can be loaded from Pytorch Geometric. The datasets we use in the pa
 
 `["Cora", "Citeseer"]` for node classification.
 
+We modify the dataset loader from [DIG](https://github.com/divelab/DIG).
+
 ## Using Illuminati
 
 ## Cite
