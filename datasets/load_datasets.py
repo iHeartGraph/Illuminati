@@ -130,7 +130,7 @@ def get_dataset(dataset_dir, dataset_name, task=None):
 class MUTAGDataset(InMemoryDataset):
     def __init__(self, root, name, transform=None, pre_transform=None):
         self.root = root
-        self.name = name.upper()
+        self.name = name.lower()
         super(MUTAGDataset, self).__init__(root, transform, pre_transform)
         self.data, self.slices = torch.load(self.processed_paths[0])
 
@@ -143,7 +143,7 @@ class MUTAGDataset(InMemoryDataset):
 
     @property
     def raw_file_names(self):
-        return ['MUTAG_A', 'MUTAG_graph_labels', 'MUTAG_graph_indicator', 'MUTAG_node_labels']
+        return ['Mutagenicity_A', 'Mutagenicity_graph_labels', 'Mutagenicity_graph_indicator', 'Mutagenicity_node_labels']
 
     @property
     def processed_dir(self):
