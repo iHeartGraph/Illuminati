@@ -60,4 +60,10 @@ Here, we provide Essentialness Percentage (EP) for explained subgraphs and remai
 ## Cite
 
 ```
+@inproceedings{Haoyu22,
+author={Haoyu He and Yuede Ji and H. Howie Huang},
+booktitle={2022 IEEE European Symposium on Security and Privacy (EuroS&P)},
+title={Illuminati: Towards Explaining Graph Neural Networks for Cybersecurity Analysis},
+year={2022}
+}
 ```
