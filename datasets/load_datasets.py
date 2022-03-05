@@ -3,12 +3,13 @@ import glob
 import json
 import torch
 import pickle
+import shutil
 import numpy as np
 import os.path as osp
 from torch_geometric.datasets import MoleculeNet
 from torch_geometric.utils import dense_to_sparse
 from torch.utils.data import random_split, Subset
-from torch_geometric.data import Data, InMemoryDataset
+from torch_geometric.data import Data, InMemoryDataset, download_url, extract_zip
 from torch_geometric.loader import DataLoader
 
 
@@ -115,7 +116,7 @@ def get_dataset(dataset_dir, dataset_name, task=None):
     molecule_net_dataset_names = [name.lower() for name in MoleculeNet.names.keys()]
 
     if dataset_name.lower() == 'Mutagenicity'.lower():
-        return load_MUTAG(dataset_dir, 'Mutagenicity')
+        return load_MUTAG(dataset_dir, 'mutagenicity')
     elif dataset_name.lower() in sync_dataset_dict.keys():
         sync_dataset_filename = sync_dataset_dict[dataset_name.lower()]
         return load_syn_data(dataset_dir, sync_dataset_filename)
@@ -152,6 +153,15 @@ class MUTAGDataset(InMemoryDataset):
     @property
     def processed_file_names(self):
         return ['data.pt']
+
+    def download(self):
+        url = 'https://www.chrsmrrs.com/graphkerneldatasets'
+        folder = osp.join(self.root, self.name)
+        path = download_url(f'{url}/{self.name}.zip', folder)
+        extract_zip(path, folder)
+        os.unlink(path)
+        shutil.rmtree(self.raw_dir)
+        os.rename(osp.join(folder, self.name), self.raw_dir)
 
     def process(self):
         r"""Processes the dataset to the :obj:`self.processed_dir` folder."""
