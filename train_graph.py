@@ -34,7 +34,6 @@ if __name__ == '__main__':
     early_stop = 100
     loop = True
     if dataset_name == 'ba_2motifs':
-        early_stop = 500
         loop = False
 
     normalize = T.NormalizeFeatures()
