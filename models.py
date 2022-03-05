@@ -10,7 +10,7 @@ from typing import Optional, Callable, List
 
 
 from torch_geometric.nn.models.basic_gnn import BasicGNN
-from torch_geometric.nn.conv import GCNConv
+from torch_geometric.nn.conv import MessagePassing, GCNConv
 
 torch.manual_seed(2020)
 
@@ -127,17 +127,9 @@ class GCN(nn.Module):
 
 class GCN_(BasicGNN):
 
-    def __init__(self, in_channels: int, hidden_channels: int, num_layers: int,
-                 out_channels: Optional[int] = None, dropout: float = 0.0,
-                 act: Optional[Callable] = ReLU(inplace=True),
-                 norm: Optional[torch.nn.Module] = None, jk: str = 'last', **kwargs):
-        super().__init__(in_channels, hidden_channels, num_layers,
-                         out_channels, dropout, act, norm, jk)
-
-        self.convs.append(GCNConv_(in_channels, hidden_channels, **kwargs))
-        for _ in range(1, num_layers):
-            self.convs.append(
-                GCNConv_(hidden_channels, hidden_channels, **kwargs))
+    def init_conv(self, in_channels: int, out_channels: int,
+                  **kwargs) -> MessagePassing:
+        return GCNConv_(in_channels, out_channels, **kwargs)
 
     def get_emb(self, data, *args, **kwargs):
         x, edge_index = data.x, data.edge_index

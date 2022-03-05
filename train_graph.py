@@ -74,7 +74,8 @@ if __name__ == '__main__':
         eval_acc, eval_loss = evaluate(dataloader=data_loader['eval'], model=model, loss_fc=loss_fc)
         print(epoch, eval_acc, eval_loss)
 
-        is_best = (eval_acc > best_acc) or (eval_loss < best_loss and eval_acc >= best_acc)
+        is_best = (eval_acc > best_acc) or \
+                  (eval_loss < best_loss and eval_acc >= best_acc)
         if is_best:
             early_stop_count = 0
         else:
