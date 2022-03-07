@@ -3,10 +3,9 @@ import torch.nn as nn
 import torch_geometric.nn as gnn
 from torch import Tensor
 import torch.nn.functional as F
-from torch.nn import ReLU
 from torch_sparse import SparseTensor
 from torch_geometric.typing import Adj, Size
-from typing import Optional, Callable, List
+from typing import List
 
 
 from torch_geometric.nn.models.basic_gnn import BasicGNN
