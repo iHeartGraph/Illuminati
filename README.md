@@ -62,7 +62,7 @@ Here, we provide Essentialness Percentage (EP) and probability reduction for exp
 ```
 @inproceedings{Haoyu22,
 author={Haoyu He and Yuede Ji and H. Howie Huang},
-booktitle={2022 IEEE European Symposium on Security and Privacy (EuroS&P)},
+booktitle={2022 IEEE 7th European Symposium on Security and Privacy (EuroS&P)},
 title={Illuminati: Towards Explaining Graph Neural Networks for Cybersecurity Analysis},
 year={2022}
 }
