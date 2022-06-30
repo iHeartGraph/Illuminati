@@ -1,6 +1,8 @@
 # Illuminati
 
-This repository contains the source code for the paper, <b>"Illuminati: Towards Explaining Graph Neural Networks for Cybersecurity Analysis"</b> by Haoyu He, Yuede Ji and H. Howie Huang ([EuroS&P 2022](https://www.ieee-security.org/TC/EuroSP2022/)).
+This repository contains the source code for the paper, <b>"Illuminati: Towards Explaining Graph Neural Networks for Cybersecurity Analysis"</b> by Haoyu He, Yuede Ji and H. Howie Huang.
+
+[[Paper](https://ieeexplore.ieee.org/document/9797387)] [[EuroS&P 2022](https://www.ieee-security.org/TC/EuroSP2022/)]
 
 We provide the implementation of public datasets for the purpose of reproduction.
 
